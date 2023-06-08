@@ -1,0 +1,21 @@
+{
+    "item.oldworld.old_ingot": "Old Ingot",
+    "item.oldworld.black_spider_spawn_egg": "Black Spider Spawn Egg",
+    
+    "item.oldworld.old_hammer": "Old Hammer",
+    "item.oldworld.old_sword": "Old Sword",
+    "item.oldworld.old_pickaxe": "Old Pickaxe",
+    "item.oldworld.old_axe": "Old Axe",
+    "item.oldworld.old_shovel": "Old Shovel",
+    "item.oldworld.old_hoe": "Old Hoe",
+
+    "item.oldworld.earth_staff": "Earth Staff", "item.oldworld.earth_staff.tooltip": "The most basic Earth elemental staff",
+    "item.oldworld.fire_staff": "Fire Staff", "item.oldworld.fire_staff.tooltip": "The most basic Fire elemental staff",
+    "item.oldworld.frost_staff": "Frost Staff", "item.oldworld.frost_staff.tooltip": "The most basic Frost elemental staff",
+    "item.oldworld.bite_staff": "Bite Staff", "item.oldworld.bite_staff.tooltip": "A staff that summon fangs from the ground when used",
+    "item.oldworld.crystal_staff": "Crystal Staff", "item.oldworld.crystal_staff.tooltip": "A staff that summon etheral crystals to target the enemies",
+
+    "block.oldworld.old_ingot_block": "Old Ingot Block",
+    "block.oldworld.old_ore": "Old Ore",
+    "block.oldworld.deepslate_old_ore": "Deepslate Old Ore"
+}
