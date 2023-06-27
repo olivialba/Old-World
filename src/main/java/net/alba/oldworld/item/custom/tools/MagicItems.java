@@ -1,4 +1,4 @@
-package net.alba.oldworld.item.custom;
+package net.alba.oldworld.item.custom.tools;
 
 import java.util.List;
 
@@ -14,15 +14,14 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
-public abstract class StaffWeapons extends Item{
+public abstract class MagicItems extends Item{
 
-    
-    public StaffWeapons(Settings settings) {
+    public MagicItems(Settings settings) {
         super(settings);
     }
 
     /**
-     * If the user right click with the staff weapon
+     * If the user right click with the item.
      * 
      * @param world - world object
      * @param player - player with the staff weapons
@@ -37,33 +36,34 @@ public abstract class StaffWeapons extends Item{
         if (!world.isClient) {
             player.getItemCooldownManager().set(this, getCooldown());
 
-            if (true) {
-                if (getStaffSound() != null) {
-                    world.playSound(null, player.getBlockPos(), getStaffSound(), SoundCategory.PLAYERS, 0.85F, 1.0F);
-                }
-                rightClick(world, player, stack, hand);
-                return TypedActionResult.success(stack);
+            if (getSound() != null) {
+                world.playSound(null, player.getBlockPos(), getSound(), SoundCategory.PLAYERS, 0.85F, 1.0F);
             }
+            rightClick(world, player, stack, hand);
+            
+            return TypedActionResult.success(stack);
         }
         return TypedActionResult.pass(stack);
     }
 
     /** 
-     * Sound of the staff, called before 'rightClick' method
+     * Sound of the staff, called before 'rightClick' method.
      * 
      * @return sound emitted upon staff use
      */
-    public SoundEvent getStaffSound() {
+    public SoundEvent getSound() {
         return null;
     }
 
     /**
-     * Setting tooltips for staffs (color GRAY)
+     * Setting tooltips for staffs (color GRAY).
      * 
      * @return lang path for tooltip, example: 'item.oldworld.frost_staff.tooltip'
      */
-    public abstract String setToolTipString();
-
+    public String setToolTipString() {
+        return null;
+    }
+    
     @Override
     public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
         if (setToolTipString() == null) {
@@ -73,8 +73,7 @@ public abstract class StaffWeapons extends Item{
     }
 
     /**
-     * Get Cooldown of the weapons 
-     * TO DO: (IMPLEMENT READ NBT TAG OF PLAYER USE SPEED)
+     * Get cooldown of the item.
      * 
      * @return return cooldown of the weapon 
      */

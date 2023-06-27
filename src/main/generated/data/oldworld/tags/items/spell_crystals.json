@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "oldworld:fire_crystal",
+    "oldworld:fire_crystal_combustion",
+    "oldworld:fire_crystal_fireball",
+    "oldworld:fire_crystal_meteor"
+  ]
+}

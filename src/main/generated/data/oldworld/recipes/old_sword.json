@@ -10,9 +10,9 @@
     }
   },
   "pattern": [
-    "OOO",
-    "OSO",
-    "OSO"
+    "O",
+    "S",
+    "S"
   ],
   "result": {
     "item": "oldworld:old_sword"

@@ -2,7 +2,9 @@ package net.alba.oldworld.item;
 
 import net.alba.oldworld.OldWorld;
 import net.alba.oldworld.entity.ModEntities;
-import net.alba.oldworld.item.custom.*;
+import net.alba.oldworld.item.custom.ToolMaterialGroups;
+import net.alba.oldworld.item.custom.crystals.FireCrystal;
+import net.alba.oldworld.item.custom.grimoires.GrimoireBasic;
 import net.alba.oldworld.item.custom.staffs.*;
 import net.alba.oldworld.item.custom.tools.OldHammer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -18,10 +20,14 @@ import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 
 public class ModItems {
+    // TAGS
+    public static final TagKey<Item> TAG_SPELL_CRYSTALS = TagKey.of(RegistryKeys.ITEM, new Identifier("oldworld:spell_crystals"));
     
     // ITEMS
     public static final Item OLD_INGOT = registerItem("old_ingot", new Item(settings()));
@@ -37,19 +43,29 @@ public class ModItems {
 
     
     // STAFFS
-    public static final Item EARTH_STAFF = registerItem("earth_staff", new EarthStaff(settings().maxCount(1).rarity(Rarity.UNCOMMON)));
-    public static final Item FIRE_STAFF = registerItem("fire_staff", new FireStaff(settings().maxCount(1).fireproof().rarity(Rarity.UNCOMMON)));
-    public static final Item FROST_STAFF = registerItem("frost_staff", new FrostStaff(settings().maxCount(1).rarity(Rarity.UNCOMMON)));
+    public static final Item EARTH_STAFF = registerItem("earth_staff", new EarthStaff(settingMaxCount().rarity(Rarity.UNCOMMON)));
+    public static final Item FIRE_STAFF = registerItem("fire_staff", new FireStaff(settingMaxCount().fireproof().rarity(Rarity.UNCOMMON)));
+    public static final Item FROST_STAFF = registerItem("frost_staff", new FrostStaff(settingMaxCount().rarity(Rarity.UNCOMMON)));
+    public static final Item BITE_STAFF = registerItem("bite_staff", new BiteStaff(settingMaxCount().rarity(Rarity.RARE)));
+    public static final Item CRYSTAL_STAFF = registerItem("crystal_staff", new CrystalStaff(settingMaxCount().rarity(Rarity.RARE)));
 
-    public static final Item BITE_STAFF = registerItem("bite_staff", new BiteStaff(settings().maxCount(1).rarity(Rarity.RARE)));
-    //public static final Item CRYSTAL_STAFF = registerItem("crystal_staff", new CrystalStaff(settings().maxCount(1).rarity(Rarity.RARE)));
+    // GRIMOIRE
+    public static final Item GRIMOIRE_BASIC = registerItem("grimoire_basic", new GrimoireBasic(settingMaxCount().rarity(Rarity.UNCOMMON)));
+
+
+    // CRYSTALS
+    public static final Item FIRE_CRYSTAL = registerItem("fire_crystal", new FireCrystal(settingMaxCount(), "item.oldworld.fire_crystal.basic.tooltip", "FireBasic"));
+    public static final Item FIRE_CRYSTAL_FIREBALL = registerItem("fire_crystal_fireball", new FireCrystal(settingMaxCount(), "item.oldworld.fire_crystal.fireball.tooltip", "FireFireball"));
+    public static final Item FIRE_CRYSTAL_COMBUSTION = registerItem("fire_crystal_combustion", new FireCrystal(settingMaxCount(), "item.oldworld.fire_crystal.combustion.tooltip", "FireCombustion"));
+    public static final Item FIRE_CRYSTAL_METEOR = registerItem("fire_crystal_meteor", new FireCrystal(settingMaxCount().rarity(Rarity.UNCOMMON), "item.oldworld.fire_crystal.meteor.tooltip", "FireMeteor"));
+
 
     // ENTITIES
     public static final Item BLACK_SPIDER_SPAWN_EGG = registerItem("black_spider_spawn_egg", new SpawnEggItem(ModEntities.BLACK_SPIDER, 0x333E48, 0x7C868E, settings()));
 
     // ITEMGROUP
     public static void addItemsToItemGroup() {
-        addItemToItemGroup(ModItemGroup.OLD_WORLD, OLD_HAMMER);
+        //addItemToItemGroup(ModItemGroup.OLD_WORLD, OLD_HAMMER);
 
         addItemToItemGroup(ModItemGroup.OLD_WORLD, OLD_SWORD);
         addItemToItemGroup(ModItemGroup.OLD_WORLD, OLD_PICKAXE);
@@ -57,20 +73,29 @@ public class ModItems {
         addItemToItemGroup(ModItemGroup.OLD_WORLD, OLD_SHOVEL);
         addItemToItemGroup(ModItemGroup.OLD_WORLD, OLD_HOE);
 
-        addItemToItemGroup(ModItemGroup.OLD_WORLD, EARTH_STAFF);    //1
-        addItemToItemGroup(ModItemGroup.OLD_WORLD, FIRE_STAFF);
-        addItemToItemGroup(ModItemGroup.OLD_WORLD, FROST_STAFF);
-        addItemToItemGroup(ModItemGroup.OLD_WORLD, BITE_STAFF);     //2
-        //addItemToItemGroup(ModItemGroup.OLD_WORLD, CRYSTAL_STAFF);
-
+        //addItemToItemGroup(ModItemGroup.OLD_WORLD, EARTH_STAFF);
+        //addItemToItemGroup(ModItemGroup.OLD_WORLD, FIRE_STAFF);
+        //addItemToItemGroup(ModItemGroup.OLD_WORLD, FROST_STAFF);
+        //addItemToItemGroup(ModItemGroup.OLD_WORLD, BITE_STAFF);     
 
         addItemToItemGroup(ModItemGroup.OLD_WORLD, OLD_INGOT);
         addItemToItemGroup(ModItemGroup.OLD_WORLD, BLACK_SPIDER_SPAWN_EGG);
+
+        addItemToItemGroup(ModItemGroup.OLD_WORLD, GRIMOIRE_BASIC);
+
+        addItemToItemGroup(ModItemGroup.OLD_WORLD, FIRE_CRYSTAL);
+        addItemToItemGroup(ModItemGroup.OLD_WORLD, FIRE_CRYSTAL_FIREBALL);
+        addItemToItemGroup(ModItemGroup.OLD_WORLD, FIRE_CRYSTAL_COMBUSTION);
+        addItemToItemGroup(ModItemGroup.OLD_WORLD, FIRE_CRYSTAL_METEOR);
     }
 
 
     public static FabricItemSettings settings() {
         return new FabricItemSettings();
+    }
+
+    public static FabricItemSettings settingMaxCount() {
+        return new FabricItemSettings().maxCount(1);
     }
 
     private static Item registerItem(String name, Item item) {

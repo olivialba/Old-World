@@ -1,6 +1,6 @@
 package net.alba.oldworld.item.custom.staffs;
 
-import net.alba.oldworld.item.custom.StaffWeapons;
+import net.alba.oldworld.item.custom.tools.MagicItems;
 import net.alba.oldworld.magic.MagicCalc;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.mob.EvokerFangsEntity;
@@ -10,7 +10,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BiteStaff extends StaffWeapons{
+public class BiteStaff extends MagicItems{
 
     public BiteStaff(Settings settings) {
         super(settings);

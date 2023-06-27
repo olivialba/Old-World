@@ -1,11 +1,16 @@
-// 1.19.4	2023-05-25T04:35:46.1844018	Old World/Model Definitions
+// 1.19.4	2023-06-24T18:14:08.185448	Old World/Model Definitions
+ae283a305824dfaa6728611684f354d13803d2a9 assets\oldworld\models\item\fire_crystal_combustion.json
 f146cb96d42a0e77d3707f203d71726755f92986 assets\oldworld\blockstates\deepslate_old_ore.json
 515f54aab47c4678acc92a5532e232208d871e44 assets\oldworld\models\block\old_ore.json
 2aec2ba205a41a395104be8f6ee0f2bf725890df assets\oldworld\blockstates\old_ingot_block.json
 de520c50c7e547e92ed7fc2af2b5f8a643ffcaea assets\oldworld\models\item\old_sword.json
 bd24b2bdc77a202e922ce1385a437ae39a49133e assets\oldworld\models\item\old_pickaxe.json
+ae283a305824dfaa6728611684f354d13803d2a9 assets\oldworld\models\item\fire_crystal_meteor.json
+ae283a305824dfaa6728611684f354d13803d2a9 assets\oldworld\models\item\fire_crystal_fireball.json
+db2487ae268e467cc3e46fd83f957e9af7e23ea9 assets\oldworld\models\item\crystal_imbuer.json
 a6cc8471ac910739687e1375724298c2e59383d7 assets\oldworld\models\item\old_ore.json
 cc09217ab4e7c478480b6b18227475db1a3d2e2b assets\oldworld\models\item\old_ingot_block.json
+13f35b37d2efd57c1da944c25d83ce5daf8a8a09 assets\oldworld\blockstates\crystal_imbuer.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets\oldworld\models\item\black_spider_spawn_egg.json
 bbbbe111cc5eab5b7561f9e93cd86921809d6442 assets\oldworld\models\item\deepslate_old_ore.json
 56e56c820e152560595b2635f71cd12ff9ca5176 assets\oldworld\models\block\deepslate_old_ore.json

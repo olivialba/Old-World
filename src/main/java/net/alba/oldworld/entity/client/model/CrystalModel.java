@@ -13,17 +13,10 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
 
 public class CrystalModel extends EntityModel<Entity> {
-
 	private final ModelPart base;
-
 
 	public CrystalModel(ModelPart root) {
 		this.base = root.getChild("base");
-/**
- * 		this.cube1_r1 = this.base.getChild("cube1_r1");
-		this.cube2_r1 = this.base.getChild("cube2_r1");
-		this.cube3_r1 = this.base.getChild("cube3_r1");
-		this.cube4_r1 = this.base.getChild("cube4_r1"); */	
 	}
 
 	public static TexturedModelData getTexturedModelData() {

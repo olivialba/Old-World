@@ -28,9 +28,9 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
             RecipeCategory.DECORATIONS, ModBlocks.OLD_INGOT_BLOCK);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItems.OLD_SWORD)
-            .pattern("OOO")
-            .pattern("OSO")
-            .pattern("OSO")
+            .pattern("O")
+            .pattern("S")
+            .pattern("S")
             .input('O', ModItems.OLD_INGOT)
             .input('S', Items.STICK)
             .criterion(FabricRecipeProvider.hasItem(Items.STICK), 

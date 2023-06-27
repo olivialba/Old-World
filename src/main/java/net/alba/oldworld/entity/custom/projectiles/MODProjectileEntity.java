@@ -5,13 +5,13 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.AbstractFireballEntity;
 import net.minecraft.world.World;
 
-public class ProjectileEntity extends AbstractFireballEntity{
+public class MODProjectileEntity extends AbstractFireballEntity{
 
-    public ProjectileEntity(EntityType<? extends ProjectileEntity> entityType, World world) {
+    public MODProjectileEntity(EntityType<? extends MODProjectileEntity> entityType, World world) {
         super(entityType, world);
     }
 
-    public ProjectileEntity(EntityType<? extends ProjectileEntity> entityType, LivingEntity owner, double velocityX, double velocityY, double velocityZ, World world) {
+    public MODProjectileEntity(EntityType<? extends MODProjectileEntity> entityType, LivingEntity owner, double velocityX, double velocityY, double velocityZ, World world) {
         super(entityType, owner, velocityX, velocityY, velocityZ, world);
     }
 

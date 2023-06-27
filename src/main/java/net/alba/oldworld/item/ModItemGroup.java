@@ -13,7 +13,7 @@ public class ModItemGroup {
     public static void registerItemGroups() {
         OLD_WORLD = FabricItemGroup.builder(new Identifier(OldWorld.MOD_ID, "oldworld"))
             .displayName(Text.literal("Old World"))
-            .icon(() -> new ItemStack(ModItems.OLD_HAMMER))
+            .icon(() -> new ItemStack(ModItems.OLD_INGOT))
             .build();
     }
 }
