@@ -2,8 +2,10 @@ package net.alba.oldworld.item.custom.grimoires;
 
 import java.util.List;
 
-import net.alba.oldworld.item.custom.tools.MagicItems;
-import net.alba.oldworld.magic.SpellsMap;
+import net.alba.oldworld.item.custom.MagicItems;
+import net.alba.oldworld.util.IEntityDataSaver;
+import net.alba.oldworld.util.SpellIndexData;
+import net.alba.oldworld.util.magic.SpellsMap;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.item.TooltipContext;
@@ -24,13 +26,14 @@ public class GrimoireBasic extends MagicItems {
 
     @Override
     public void rightClick(World world, PlayerEntity player, ItemStack stack, Hand hand) {
-        NbtCompound tag = stack.getNbt();
+        NbtCompound grimoireSpellNbt = stack.getNbt().getCompound("oldworld.spells");
 
-        if (stack.getItem() == this && tag != null) {
-            String spellTag = "spell" + 1;
+        if (stack.getItem() == this && (grimoireSpellNbt != null)) {
+            int spellSelection = getSpellIndexFromPlayer(player);
+            String spellTag = "spell" + spellSelection;
 
-            if (tag.contains(spellTag)) {
-                String spellKey = tag.getString(spellTag);
+            if (grimoireSpellNbt.contains(spellTag)) {
+                String spellKey = grimoireSpellNbt.getString(spellTag);
                 SpellsMap.SpellFunction method = SpellsMap.getMethodMap().get(spellKey);
                 
                 if (method != null) {
@@ -43,17 +46,26 @@ public class GrimoireBasic extends MagicItems {
         }
     }
 
+    private static int getSpellIndexFromPlayer(PlayerEntity player) {
+        int index = ((IEntityDataSaver) player).getPersistentData().getInt("spell_index");
+        if (index == 0) {
+            SpellIndexData.addIndex(((IEntityDataSaver) player), 1);
+            return 1;
+        }
+        return index;
+    }
+
     @Environment(EnvType.CLIENT)
     @Override
     public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
         tooltip.add(Text.empty());
         tooltip.add(Text.translatable("item.oldworld.grimoire_basic.tooltip_1").formatted(Formatting.GRAY));
         tooltip.add(Text.translatable("item.oldworld.grimoire_basic.tooltip_2").formatted(Formatting.GRAY));
-        tooltip.add(Text.translatable("item.oldworld.grimoire_basic.tooltip_3", 0).formatted(Formatting.GRAY));
+        //tooltip.add(Text.translatable("item.oldworld.grimoire_basic.tooltip_3", 0).formatted(Formatting.GRAY));
     }
 
     @Override
     public int getCooldown() {
-        return 40;
+        return 10;
     }
 }

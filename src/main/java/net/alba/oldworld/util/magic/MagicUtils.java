@@ -1,4 +1,4 @@
-package net.alba.oldworld.magic;
+package net.alba.oldworld.util.magic;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.TargetPredicate;
@@ -13,7 +13,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
 
-public class MagicCalc {
+public class MagicUtils {
 
 
     /** Calculate the block position of the block the player is looking at.

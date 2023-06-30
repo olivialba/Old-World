@@ -34,5 +34,9 @@
         "item.oldworld.fire_crystal.basic.tooltip" : "A basic fire spell",
         "item.oldworld.fire_crystal.fireball.tooltip" : "A spell that launch a fireball",
         "item.oldworld.fire_crystal.combustion.tooltip" : "A spell that sets the enemy on fire",
-        "item.oldworld.fire_crystal.meteor.tooltip" : "A spell that summons a meteor"
+        "item.oldworld.fire_crystal.meteor.tooltip" : "A spell that summons a meteor",
+
+    "key.category.oldworld" : "Old World",
+        "key.oldworld.next_spell" : "Next Spell",
+        "key.oldworld.previous_spell" : "Previous Spell"
 }

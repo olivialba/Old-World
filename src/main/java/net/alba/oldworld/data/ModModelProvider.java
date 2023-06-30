@@ -1,8 +1,8 @@
 package net.alba.oldworld.data;
 
 import net.alba.oldworld.OldWorld;
-import net.alba.oldworld.block.ModBlocks;
-import net.alba.oldworld.item.ModItems;
+import net.alba.oldworld.registry.OldBlocks;
+import net.alba.oldworld.registry.OldItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.data.client.BlockStateModelGenerator;
@@ -19,27 +19,27 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.DEEPSLATE_OLD_ORE);
-        blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.OLD_ORE);
-        blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.OLD_INGOT_BLOCK);
-        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.CRYSTAl_IMBUER);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(OldBlocks.DEEPSLATE_OLD_ORE);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(OldBlocks.OLD_ORE);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(OldBlocks.OLD_INGOT_BLOCK);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(OldBlocks.CRYSTAl_IMBUER);
 
-        blockStateModelGenerator.registerParentedItemModel(ModItems.BLACK_SPIDER_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
+        blockStateModelGenerator.registerParentedItemModel(OldItems.BLACK_SPIDER_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
 
-        blockStateModelGenerator.registerParentedItemModel(ModItems.FIRE_CRYSTAL_FIREBALL, getCrystalModel("fire_crystal"));
-        blockStateModelGenerator.registerParentedItemModel(ModItems.FIRE_CRYSTAL_COMBUSTION, getCrystalModel("fire_crystal"));
-        blockStateModelGenerator.registerParentedItemModel(ModItems.FIRE_CRYSTAL_METEOR, getCrystalModel("fire_crystal"));
+        blockStateModelGenerator.registerParentedItemModel(OldItems.FIRE_CRYSTAL_FIREBALL, getCrystalModel("fire_crystal"));
+        blockStateModelGenerator.registerParentedItemModel(OldItems.FIRE_CRYSTAL_COMBUSTION, getCrystalModel("fire_crystal"));
+        blockStateModelGenerator.registerParentedItemModel(OldItems.FIRE_CRYSTAL_METEOR, getCrystalModel("fire_crystal"));
     }
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-        itemModelGenerator.register(ModItems.OLD_INGOT, Models.GENERATED);
+        itemModelGenerator.register(OldItems.OLD_INGOT, Models.GENERATED);
 
-        itemModelGenerator.register(ModItems.OLD_SWORD, Models.HANDHELD);
-        itemModelGenerator.register(ModItems.OLD_PICKAXE, Models.HANDHELD);
-        itemModelGenerator.register(ModItems.OLD_AXE, Models.HANDHELD);
-        itemModelGenerator.register(ModItems.OLD_SHOVEL, Models.HANDHELD);
-        itemModelGenerator.register(ModItems.OLD_HOE, Models.HANDHELD);
+        itemModelGenerator.register(OldItems.OLD_SWORD, Models.HANDHELD);
+        itemModelGenerator.register(OldItems.OLD_PICKAXE, Models.HANDHELD);
+        itemModelGenerator.register(OldItems.OLD_AXE, Models.HANDHELD);
+        itemModelGenerator.register(OldItems.OLD_SHOVEL, Models.HANDHELD);
+        itemModelGenerator.register(OldItems.OLD_HOE, Models.HANDHELD);
     }
 
     public Identifier getCrystalModel(String baseModel) {

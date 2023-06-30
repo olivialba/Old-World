@@ -3,12 +3,15 @@ package net.alba.oldworld.entity.client.renderer;
 import net.alba.oldworld.OldWorld;
 import net.alba.oldworld.entity.client.model.BlackSpiderModel;
 import net.alba.oldworld.entity.custom.mobs.BlackSpiderEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory.Context;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
+@Environment(EnvType.CLIENT)
 public class BlackSpiderRenderer extends GeoEntityRenderer<BlackSpiderEntity>{
 
     public BlackSpiderRenderer(Context renderManager) {

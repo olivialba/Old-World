@@ -23,7 +23,6 @@ public class CrystalImbuerScreen extends HandledScreen<CrystalImbuerScreenHandle
     @Override
     protected void init() {
         super.init();
-        //titleX = (backgroundWidth - textRenderer.getWidth(title)) / 2;
     }
 
     @Override

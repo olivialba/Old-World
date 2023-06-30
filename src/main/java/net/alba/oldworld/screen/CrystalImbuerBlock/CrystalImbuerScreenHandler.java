@@ -1,6 +1,6 @@
 package net.alba.oldworld.screen.CrystalImbuerBlock;
 
-import net.alba.oldworld.screen.ModScreenHandlers;
+import net.alba.oldworld.registry.OldScreenHandlers;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
@@ -20,7 +20,7 @@ public class CrystalImbuerScreenHandler extends ScreenHandler{
     }
 
     public CrystalImbuerScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory, PropertyDelegate delegate) {
-        super(ModScreenHandlers.CRYSTAL_IMBUER_SCREEN_HANDLER, syncId);
+        super(OldScreenHandlers.CRYSTAL_IMBUER_SCREEN_HANDLER, syncId);
         checkSize(inventory, 6);
         this.inventory = inventory;
         inventory.onOpen(playerInventory.player);

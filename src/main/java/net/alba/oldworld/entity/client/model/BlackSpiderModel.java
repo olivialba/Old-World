@@ -2,14 +2,17 @@ package net.alba.oldworld.entity.client.model;
 
 import net.alba.oldworld.OldWorld;
 import net.alba.oldworld.entity.custom.mobs.BlackSpiderEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.MathHelper;
 import software.bernie.geckolib.constant.DataTickets;
 import software.bernie.geckolib.core.animatable.model.CoreGeoBone;
 import software.bernie.geckolib.core.animation.AnimationState;
 import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.model.data.EntityModelData;
-import net.minecraft.util.math.MathHelper;
 
+@Environment(EnvType.CLIENT)
 public class BlackSpiderModel extends GeoModel<BlackSpiderEntity>{
 
     @Override

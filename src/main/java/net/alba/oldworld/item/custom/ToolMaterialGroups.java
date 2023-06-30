@@ -2,7 +2,7 @@ package net.alba.oldworld.item.custom;
 
 import java.util.function.Supplier;
 
-import net.alba.oldworld.item.ModItems;
+import net.alba.oldworld.registry.OldItems;
 import net.fabricmc.yarn.constants.MiningLevels;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
@@ -11,7 +11,7 @@ import net.minecraft.util.Lazy;
 @SuppressWarnings("deprecation")
 public enum ToolMaterialGroups implements ToolMaterial {
     OLD_METAL(MiningLevels.DIAMOND, 1350, 7.5f, 2.5f, 14, 
-        () -> Ingredient.ofItems(ModItems.OLD_INGOT));
+        () -> Ingredient.ofItems(OldItems.OLD_INGOT));
 
 
     private final int miningLevel;

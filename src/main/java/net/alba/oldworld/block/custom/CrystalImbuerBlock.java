@@ -2,8 +2,8 @@ package net.alba.oldworld.block.custom;
 
 import org.jetbrains.annotations.Nullable;
 
-import net.alba.oldworld.block.ModBlockEntities;
 import net.alba.oldworld.block.entity.CrystalImbuerBlockEntity;
+import net.alba.oldworld.registry.OldBlockEntities;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
@@ -107,6 +107,6 @@ public class CrystalImbuerBlock extends BlockWithEntity {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return world.isClient ? null : checkType(type, ModBlockEntities.CRYSTAL_IMBUER, CrystalImbuerBlockEntity::tick);
+        return world.isClient ? null : checkType(type, OldBlockEntities.CRYSTAL_IMBUER, CrystalImbuerBlockEntity::tick);
     }
 }

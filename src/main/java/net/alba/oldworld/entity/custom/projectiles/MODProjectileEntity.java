@@ -5,7 +5,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.AbstractFireballEntity;
 import net.minecraft.world.World;
 
-public class MODProjectileEntity extends AbstractFireballEntity{
+public abstract class MODProjectileEntity extends AbstractFireballEntity{
 
     public MODProjectileEntity(EntityType<? extends MODProjectileEntity> entityType, World world) {
         super(entityType, world);

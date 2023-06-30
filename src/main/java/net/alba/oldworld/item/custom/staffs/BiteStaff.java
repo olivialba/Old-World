@@ -1,7 +1,7 @@
 package net.alba.oldworld.item.custom.staffs;
 
-import net.alba.oldworld.item.custom.tools.MagicItems;
-import net.alba.oldworld.magic.MagicCalc;
+import net.alba.oldworld.item.custom.MagicItems;
+import net.alba.oldworld.util.magic.MagicUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.mob.EvokerFangsEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -19,7 +19,7 @@ public class BiteStaff extends MagicItems{
 
     @Override
     public void rightClick(World world, PlayerEntity player, ItemStack stack, Hand hand) {
-        BlockPos blockP = MagicCalc.getBlockPosition(world, player, 60);
+        BlockPos blockP = MagicUtils.getBlockPosition(world, player, 60);
 
         BlockState blockState = world.getBlockState(blockP);
         if (blockState.isAir()) {

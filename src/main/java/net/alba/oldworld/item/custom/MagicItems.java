@@ -1,4 +1,4 @@
-package net.alba.oldworld.item.custom.tools;
+package net.alba.oldworld.item.custom;
 
 import java.util.List;
 

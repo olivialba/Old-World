@@ -1,4 +1,4 @@
-package net.alba.oldworld.block;
+package net.alba.oldworld.registry;
 
 import net.alba.oldworld.OldWorld;
 import net.alba.oldworld.block.entity.CrystalImbuerBlockEntity;
@@ -8,13 +8,13 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-public class ModBlockEntities {
+public class OldBlockEntities {
     public static BlockEntityType<CrystalImbuerBlockEntity> CRYSTAL_IMBUER;
 
     public static void registerBlockEntities() {
         CRYSTAL_IMBUER = Registry.register(Registries.BLOCK_ENTITY_TYPE,
             new Identifier(OldWorld.MOD_ID, "crystal_infuser"),
             FabricBlockEntityTypeBuilder.create(CrystalImbuerBlockEntity::new,
-                ModBlocks.CRYSTAl_IMBUER).build(null));
+                OldBlocks.CRYSTAl_IMBUER).build(null));
     }
 }

@@ -1,7 +1,8 @@
-package net.alba.oldworld.magic;
+package net.alba.oldworld.util.magic;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
 

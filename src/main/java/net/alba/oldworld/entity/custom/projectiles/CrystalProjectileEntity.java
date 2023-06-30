@@ -1,6 +1,6 @@
 package net.alba.oldworld.entity.custom.projectiles;
 
-import net.alba.oldworld.entity.ModEntitiesClient;
+import net.alba.oldworld.registry.OldEntities;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -23,7 +23,7 @@ public class CrystalProjectileEntity extends MODProjectileEntity {
     }
 
     public CrystalProjectileEntity(World world, LivingEntity owner, double directionX, double directionY, double directionZ, float damage, StatusEffectInstance effect, boolean fire, boolean shatter) {
-        super(ModEntitiesClient.CRYSTAL_PROJECTILE, owner, directionX, directionY, directionZ, world);
+        super(OldEntities.CRYSTAL_PROJECTILE, owner, directionX, directionY, directionZ, world);
         this.damage = damage;
         this.status = effect;
         this.shatter = shatter;

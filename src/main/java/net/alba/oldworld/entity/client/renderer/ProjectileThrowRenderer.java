@@ -2,6 +2,8 @@ package net.alba.oldworld.entity.client.renderer;
 
 import net.alba.oldworld.OldWorld;
 import net.alba.oldworld.entity.custom.projectiles.BasicProjectileEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -14,6 +16,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RotationAxis;
 
+@Environment(EnvType.CLIENT)
 public class ProjectileThrowRenderer extends EntityRenderer<BasicProjectileEntity> {
     private static final Identifier TEXTURE = new Identifier(OldWorld.MOD_ID, "textures/entity/projectile_throw.png");
     private final LlamaSpitEntityModel<BasicProjectileEntity> model;

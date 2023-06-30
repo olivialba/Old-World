@@ -11,22 +11,22 @@ import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
 
-public class BasicProjectileEntity extends MODProjectileEntity{
-    private float damage;
-    private StatusEffectInstance status;
+public class BallBasicEntity extends MODProjectileEntity {
+    private float damage = 0;
+    private StatusEffectInstance status = null;
     private boolean giveFire;
 
-    public BasicProjectileEntity(EntityType<? extends MODProjectileEntity> entityType, World world) {
+    public BallBasicEntity(EntityType<? extends BallBasicEntity> entityType, World world) {
         super(entityType, world);
     }
 
-    public BasicProjectileEntity(World world, LivingEntity owner, double velocityX, double velocityY, double velocityZ, float damage, StatusEffectInstance effect, boolean fire) {
-        super(OldEntities.PROJECTILE_THROW, owner, velocityX, velocityY, velocityZ, world);
+    public BallBasicEntity(World world, LivingEntity owner, double directionX, double directionY, double directionZ, float damage, StatusEffectInstance effect, boolean fire) {
+        super(OldEntities.BASIC_BALL_PROJECTILE, owner, directionX, directionY, directionZ, world);
         this.damage = damage;
         this.status = effect;
         this.giveFire = fire;
     }
-    
+
     protected void onCollision(HitResult hitResult) { 
         super.onCollision(hitResult);
         if (!this.world.isClient) {
@@ -34,7 +34,6 @@ public class BasicProjectileEntity extends MODProjectileEntity{
         }
     }
 
-    
     protected void onEntityHit(EntityHitResult entityHitResult) {
         super.onEntityHit(entityHitResult);
         if (this.world.isClient) {
@@ -47,12 +46,19 @@ public class BasicProjectileEntity extends MODProjectileEntity{
                 living.addStatusEffect(this.status);
             }
             if (this.giveFire) {
-                living.setFireTicks(120);
+                living.setFireTicks(100);
             }
         }
     }
 
-    protected ParticleEffect getParticleType() {
-        return ParticleTypes.CLOUD;
+    @Override
+    public boolean canHit() {
+        return false;
     }
+    
+    protected ParticleEffect getParticleType() {
+        return ParticleTypes.LARGE_SMOKE;
+    }
+
+
 }

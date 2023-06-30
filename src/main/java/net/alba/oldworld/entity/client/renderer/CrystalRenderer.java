@@ -3,6 +3,8 @@ package net.alba.oldworld.entity.client.renderer;
 import net.alba.oldworld.OldWorld;
 import net.alba.oldworld.entity.client.model.CrystalModel;
 import net.alba.oldworld.entity.custom.projectiles.CrystalProjectileEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -11,6 +13,7 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 
+@Environment(EnvType.CLIENT)
 public class CrystalRenderer extends EntityRenderer<CrystalProjectileEntity> {
     private final CrystalModel model;
     private static final Identifier TEXTURE = new Identifier(OldWorld.MOD_ID, "textures/entity/crystal_projectile.png");

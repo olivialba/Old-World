@@ -3,14 +3,14 @@ package net.alba.oldworld;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import net.alba.oldworld.block.ModBlockEntities;
-import net.alba.oldworld.block.ModBlocks;
-import net.alba.oldworld.entity.ModEntities;
-import net.alba.oldworld.item.ModItemGroup;
-import net.alba.oldworld.item.ModItems;
-import net.alba.oldworld.screen.ModScreenHandlers;
+import net.alba.oldworld.networking.OldPackets;
+import net.alba.oldworld.registry.OldBlockEntities;
+import net.alba.oldworld.registry.OldBlocks;
+import net.alba.oldworld.registry.OldEntities;
+import net.alba.oldworld.registry.OldItemGroup;
+import net.alba.oldworld.registry.OldItems;
+import net.alba.oldworld.registry.OldScreenHandlers;
 import net.fabricmc.api.ModInitializer;
-
 
 public class OldWorld implements ModInitializer {
 	public static final String MOD_ID = "oldworld";
@@ -18,15 +18,14 @@ public class OldWorld implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		ModItemGroup.registerItemGroups();
-		
-		ModItems.registerModItems();
+		OldItemGroup.registerItemGroups();
+		OldItems.registerModItems();
+		OldBlocks.registerModBlocks();
         
-		ModBlocks.registerModBlocks();
-        ModBlockEntities.registerBlockEntities();
+        OldBlockEntities.registerBlockEntities();
+		OldEntities.registerEntities();
 
-		ModEntities.registerEntities();
-
-        ModScreenHandlers.registerAllScreenHandlers();
+        OldScreenHandlers.registerAllScreenHandlers();
+        OldPackets.registerC2SPackets();
 	}       
 }

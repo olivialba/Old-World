@@ -1,10 +1,9 @@
 package net.alba.oldworld.block.entity;
 
 import org.jetbrains.annotations.Nullable;
-
-import net.alba.oldworld.block.ModBlockEntities;
-import net.alba.oldworld.item.ModItems;
 import net.alba.oldworld.item.custom.crystals.FireCrystal;
+import net.alba.oldworld.registry.OldBlockEntities;
+import net.alba.oldworld.registry.OldItems;
 import net.alba.oldworld.screen.CrystalImbuerBlock.CrystalImbuerScreenHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -32,7 +31,7 @@ public class CrystalImbuerBlockEntity extends BlockEntity implements NamedScreen
     private int maxProgress = 72;
 
     public CrystalImbuerBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.CRYSTAL_IMBUER, pos, state);
+        super(OldBlockEntities.CRYSTAL_IMBUER, pos, state);
         this.propertyDelegate = new PropertyDelegate() {
             public int get(int index) {
                 switch (index) {
@@ -114,10 +113,7 @@ public class CrystalImbuerBlockEntity extends BlockEntity implements NamedScreen
         }
 
         if (hasRecipe(entity)) {
-            transferSpells(entity, inventory, entity.getStack(0).getItem());
-            entity.removeStack(1,1);
-
-            //entity.setStack(0, new ItemStack(ModItems.OLD_SWORD, entity.getStack(0).getCount() + 1));
+            transferSpells(entity, inventory, entity.getStack(0));
             entity.resetProgress();
         }
     }
@@ -128,8 +124,8 @@ public class CrystalImbuerBlockEntity extends BlockEntity implements NamedScreen
             inventory.setStack(i, entity.getStack(i));
         }
 
-        boolean hasGrimoireInFirstSlot = entity.getStack(0).getItem() == ModItems.GRIMOIRE_BASIC;
-        return hasGrimoireInFirstSlot && hasOnlyCrystalsInSlots(inventory, ModItems.TAG_SPELL_CRYSTALS);
+        boolean hasGrimoireInFirstSlot = entity.getStack(0).getItem() == OldItems.GRIMOIRE_BASIC;
+        return hasGrimoireInFirstSlot && hasOnlyCrystalsInSlots(inventory, OldItems.TAG_SPELL_CRYSTALS);
     }
 
     private static boolean hasOnlyCrystalsInSlots(SimpleInventory inventory, TagKey<Item> tag) {
@@ -149,28 +145,42 @@ public class CrystalImbuerBlockEntity extends BlockEntity implements NamedScreen
         return atLeastOne;
     }
 
-    private static void transferSpells(CrystalImbuerBlockEntity entity, SimpleInventory inventory, Item item) {
-        ItemStack grimoireStack = inventory.getStack(0);
+    private static void transferSpells(CrystalImbuerBlockEntity entity, SimpleInventory inventory, ItemStack grimoireStack) {
         ItemStack crystalSlotStack;
+        NbtCompound spellData;
+        int check = 0;
 
-        if (item == ModItems.GRIMOIRE_BASIC) {
+        if (grimoireStack.getItem() == OldItems.GRIMOIRE_BASIC) {
+            check = 3;
+        } else {
+            return;
+        }
 
-            for (int i = 1; i <= 3; i++) {
-                crystalSlotStack = inventory.getStack(i);
-                if (crystalSlotStack.isEmpty()) {
-                    continue;
-                }
-                
-                // TRANSFER OF SPELLS
-                else if (crystalSlotStack.getItem() instanceof FireCrystal fireCrystal) {    
-                    String spell = fireCrystal.getSpellKey();
-
-                    NbtCompound tag = crystalSlotStack.getOrCreateNbt();
-                    tag.putString("spell" + i, spell);
-                    grimoireStack.setNbt(tag);
-                    entity.removeStack(i, 1);
-                }
+        spellData = hasOrCreateData(grimoireStack);
+        for (int i = 1; i <= check; i++) {
+            crystalSlotStack = inventory.getStack(i);
+            if (crystalSlotStack.isEmpty()) {
+                continue;
             }
+            else if (crystalSlotStack.getItem() instanceof FireCrystal fireCrystal) {    
+                String spell = fireCrystal.getSpellKey();
+
+                spellData.putString("spell" + i, spell);
+                entity.removeStack(i, 1);
+            }
+        }
+    }
+
+    @SuppressWarnings("null")
+    private static NbtCompound hasOrCreateData(ItemStack grimoire) {
+        NbtCompound grimoireNbt = grimoire.getOrCreateNbt();
+
+        if (grimoireNbt != null && grimoireNbt.contains("oldworld.spells", 10)) {
+            return grimoireNbt.getCompound("oldworld.spells");
+        } else {
+            NbtCompound spellData = new NbtCompound();
+            grimoireNbt.put("oldworld.spells", spellData);
+            return spellData;
         }
     }
 }

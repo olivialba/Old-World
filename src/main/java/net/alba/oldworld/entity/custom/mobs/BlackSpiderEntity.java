@@ -1,6 +1,6 @@
 package net.alba.oldworld.entity.custom.mobs;
 
-import net.alba.oldworld.entity.ModEntities;
+import net.alba.oldworld.registry.OldEntities;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.ActiveTargetGoal;
 import net.minecraft.entity.ai.goal.LookAroundGoal;
@@ -58,7 +58,7 @@ public class BlackSpiderEntity extends AnimalEntity implements GeoEntity{
 
     @Override
     public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
-        return ModEntities.BLACK_SPIDER.create(world);
+        return OldEntities.BLACK_SPIDER.create(world);
     }
 
     @Override
