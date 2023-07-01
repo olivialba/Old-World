@@ -51,10 +51,10 @@ public class OldItems {
     public static final Item GRIMOIRE_BASIC = registerItem("grimoire_basic", new GrimoireBasic(settingMaxCount().rarity(Rarity.UNCOMMON)));
 
     // CRYSTALS
-    public static final Item FIRE_CRYSTAL = registerItem("fire_crystal", new FireCrystal(settingMaxCount(), "item.oldworld.fire_crystal.basic.tooltip", "FireBasic"));
-    public static final Item FIRE_CRYSTAL_FIREBALL = registerItem("fire_crystal_fireball", new FireCrystal(settingMaxCount(), "item.oldworld.fire_crystal.fireball.tooltip", "FireFireball"));
-    public static final Item FIRE_CRYSTAL_COMBUSTION = registerItem("fire_crystal_combustion", new FireCrystal(settingMaxCount(), "item.oldworld.fire_crystal.combustion.tooltip", "FireCombustion"));
-    public static final Item FIRE_CRYSTAL_METEOR = registerItem("fire_crystal_meteor", new FireCrystal(settingMaxCount().rarity(Rarity.UNCOMMON), "item.oldworld.fire_crystal.meteor.tooltip", "FireMeteor"));
+    public static final Item FIRE_CRYSTAL = registerItem("fire_crystal", new FireCrystal(settingMaxCount(), "item.oldworld.fire_crystal.basic.tooltip", "FireBasic", 0xFF5C5C));
+    public static final Item FIRE_CRYSTAL_FIREBALL = registerItem("fire_crystal_fireball", new FireCrystal(settingMaxCount(), "item.oldworld.fire_crystal.fireball.tooltip", "FireFireball", 0xFF2E2E));
+    public static final Item FIRE_CRYSTAL_COMBUSTION = registerItem("fire_crystal_combustion", new FireCrystal(settingMaxCount(), "item.oldworld.fire_crystal.combustion.tooltip", "FireCombustion", 0xFF0000));
+    public static final Item FIRE_CRYSTAL_METEOR = registerItem("fire_crystal_meteor", new FireCrystal(settingMaxCount().rarity(Rarity.UNCOMMON), "item.oldworld.fire_crystal.meteor.tooltip", "FireMeteor", 0xD10000));
 
 
     // SPAWN EGG

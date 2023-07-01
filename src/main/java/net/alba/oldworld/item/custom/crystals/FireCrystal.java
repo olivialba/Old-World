@@ -13,11 +13,13 @@ import net.minecraft.world.World;
 
 public class FireCrystal extends Item {
     private static final Text NAME = Text.translatable("item.oldworld.fire_crystal_name");
+    private final int colorTexture;
     private final String tooltipText;
     private final String spellKey;
 
-    public FireCrystal(Settings settings, String tooltipText, String key) {
+    public FireCrystal(Settings settings, String tooltipText, String key, int colorTexture) {
         super(settings);
+        this.colorTexture = colorTexture;
         this.tooltipText = tooltipText;
         this.spellKey = key;
     }
@@ -26,9 +28,13 @@ public class FireCrystal extends Item {
         return this.spellKey;
     }
 
+    public int getColor(int tintIndex) {
+        return tintIndex == 1 ? colorTexture: -1;
+    }
+
     @Override
     public boolean hasGlint(ItemStack stack) {
-        return true;
+        return false;
     }
 
     @Override

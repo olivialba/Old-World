@@ -9,8 +9,10 @@ import net.alba.oldworld.entity.client.renderer.BallBasicRenderer;
 import net.alba.oldworld.entity.client.renderer.BlackSpiderRenderer;
 import net.alba.oldworld.entity.client.renderer.CrystalRenderer;
 import net.alba.oldworld.entity.client.renderer.ProjectileThrowRenderer;
+import net.alba.oldworld.item.custom.crystals.FireCrystal;
 import net.alba.oldworld.screen.CrystalImbuerBlock.CrystalImbuerScreen;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
@@ -47,5 +49,8 @@ public class OldClient {
         // Keys
         KeyBindingHelper.registerKeyBinding(NextSpell);
         KeyBindingHelper.registerKeyBinding(PreviousSpell);
+
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> ((FireCrystal) stack.getItem()).getColor(tintIndex),
+				OldItems.FIRE_CRYSTAL, OldItems.FIRE_CRYSTAL_FIREBALL, OldItems.FIRE_CRYSTAL_COMBUSTION, OldItems.FIRE_CRYSTAL_METEOR);
     }
 }
