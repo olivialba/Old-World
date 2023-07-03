@@ -1,9 +1,7 @@
 package net.alba.oldworld.item.custom.grimoires;
 
 import java.util.List;
-
 import net.alba.oldworld.item.custom.MagicItems;
-import net.alba.oldworld.util.IEntityDataSaver;
 import net.alba.oldworld.util.SpellIndexData;
 import net.alba.oldworld.util.magic.SpellsMap;
 import net.fabricmc.api.EnvType;
@@ -28,9 +26,8 @@ public class GrimoireBasic extends MagicItems {
     public void rightClick(World world, PlayerEntity player, ItemStack stack, Hand hand) {
         NbtCompound grimoireSpellNbt = stack.getNbt().getCompound("oldworld.spells");
 
-        if (stack.getItem() == this && (grimoireSpellNbt != null)) {
-            int spellSelection = getSpellIndexFromPlayer(player);
-            String spellTag = "spell" + spellSelection;
+        if (grimoireSpellNbt != null) {
+            String spellTag = "spell" + SpellIndexData.getOrCreateIndex(stack.getNbt());
 
             if (grimoireSpellNbt.contains(spellTag)) {
                 String spellKey = grimoireSpellNbt.getString(spellTag);
@@ -45,14 +42,14 @@ public class GrimoireBasic extends MagicItems {
             }
         }
     }
+    
+    @Override
+    public void onCraft(ItemStack stack, World world, PlayerEntity player) {
+        NbtCompound grimoireNbt = stack.getOrCreateNbt();
 
-    private static int getSpellIndexFromPlayer(PlayerEntity player) {
-        int index = ((IEntityDataSaver) player).getPersistentData().getInt("spell_index");
-        if (index == 0) {
-            SpellIndexData.addIndex(((IEntityDataSaver) player), 1);
-            return 1;
+        if (!grimoireNbt.contains("SpellIndex", 1)) {
+            grimoireNbt.putByte("SpellIndex", (byte)1);
         }
-        return index;
     }
 
     @Environment(EnvType.CLIENT)
@@ -61,11 +58,15 @@ public class GrimoireBasic extends MagicItems {
         tooltip.add(Text.empty());
         tooltip.add(Text.translatable("item.oldworld.grimoire_basic.tooltip_1").formatted(Formatting.GRAY));
         tooltip.add(Text.translatable("item.oldworld.grimoire_basic.tooltip_2").formatted(Formatting.GRAY));
-        //tooltip.add(Text.translatable("item.oldworld.grimoire_basic.tooltip_3", 0).formatted(Formatting.GRAY));
     }
 
     @Override
     public int getCooldown() {
         return 10;
+    }
+
+    @Override
+    public boolean allowNbtUpdateAnimation(PlayerEntity player, Hand hand, ItemStack oldStack, ItemStack newStack) {
+        return false;
     }
 }

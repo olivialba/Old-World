@@ -9,7 +9,6 @@ import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 
 public class OldClientEvents {
@@ -30,7 +29,19 @@ public class OldClientEvents {
                 }
             }
         });
+
+        MouseEvent.SCROLL_EVENT.register((scrollDelta, callbackInfo) -> {
+            double scrollDirection = Math.signum(scrollDelta);
+        
+            if (scrollDirection > 0) {
+                PreviousSpell();
+            } 
+            else if (scrollDirection < 0) {
+                NextSpell();
+            }
+        });
     }
+
 
     private static void NextSpell(){
         ClientPlayNetworking.send(OldPackets.SPELL_CHANGE_ID, CreatePacketByteBuf(1));
@@ -47,7 +58,6 @@ public class OldClientEvents {
     }
 
     private static boolean hasGrimoireInHand(PlayerEntity player) {
-        ItemStack mainHandStack = player.getMainHandStack();
-        return !mainHandStack.isEmpty() && mainHandStack.getItem() == OldItems.GRIMOIRE_BASIC;
+        return player.getMainHandStack().getItem() == OldItems.GRIMOIRE_BASIC;
     }
 }

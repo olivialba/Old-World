@@ -171,11 +171,14 @@ public class CrystalImbuerBlockEntity extends BlockEntity implements NamedScreen
         }
     }
 
-    @SuppressWarnings("null")
     private static NbtCompound hasOrCreateData(ItemStack grimoire) {
         NbtCompound grimoireNbt = grimoire.getOrCreateNbt();
 
-        if (grimoireNbt != null && grimoireNbt.contains("oldworld.spells", 10)) {
+        if (!grimoireNbt.contains("SpellIndex", 1)) {
+            grimoireNbt.putByte("SpellIndex", (byte)1);
+        }
+
+        if (grimoireNbt.contains("oldworld.spells", 10)) {
             return grimoireNbt.getCompound("oldworld.spells");
         } else {
             NbtCompound spellData = new NbtCompound();
